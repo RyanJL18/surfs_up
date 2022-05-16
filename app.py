@@ -25,16 +25,15 @@ session = Session(engine)
 app = Flask(__name__)
 
 # Example of app name variable
-import app
-print("example __name__ = %s", __name__)
-if __name__ == "__main__":
-    print("example is being run directly.")
-else:
-    print("example is being imported")
+#import app
+#print("example __name__ = %s", __name__)
+#if __name__ == "__main__":
+#    print("example is being run directly.")
+#else:
+#    print("example is being imported")
 
 # Define welcome route
 @app.route("/")
-
 def welcome():
     return(
     '''
@@ -86,3 +85,6 @@ def stats(start=None, end=None):
         filter(Measurement.date <= end).all()
     temps = list(np.ravel(results))
     return jsonify(temps)
+
+if __name__ == "__main__":
+   app.run(port = 5000, debug =True)
